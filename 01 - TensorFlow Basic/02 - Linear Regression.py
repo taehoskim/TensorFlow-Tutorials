@@ -31,14 +31,14 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
     # 최적화를 100번 수행합니다.
-    for step in xrange(100):
+    for step in range(100):
         # sess.run 을 통해 train_op 와 cost 그래프를 계산합니다.
         # 이 때, 가설 수식에 넣어야 할 실제값을 feed_dict 을 통해 전달합니다.
         _, cost_val = sess.run([train_op, cost], feed_dict={X: x_data, Y: y_data})
 
-        print step, cost_val, sess.run(W), sess.run(b)
+        print (step, cost_val, sess.run(W), sess.run(b))
 
-    print "\n=== Test ==="
+    print ("\n=== Test ===")
     # 최적화가 완료된 모델에 테스트 값을 넣고 결과가 잘 나오는지 확인해봅니다.
-    print "X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5})
-    print "X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5})
+    print ("X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5}))
+    print ("X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5}))
